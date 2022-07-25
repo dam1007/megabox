@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+
+/* 여기에 폼요소는 없다. input, button 등 */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,address,code,em,img,strong,sub,sup,b,u,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figure,figcaption,footer,header,hgroup,menu,nav,section,main,audio,video {margin: 0; padding: 0; box-sizing: border-box;}
+
+/*html5추가 시멘틱엘리먼트를 익스하위버전에서 블럭으로 인식되도록함
+익스 9 이하에는 글자로 취급이 안됨. 상자로 취급 됨.*/
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main {display: block}
+/* css 초기화 끝에는 ;을 넣지 않아도 된다! */
+
+/* button태그에 손모양 커서 */
+button {cursor: pointer}
+/* 익스하위버전에서 이미지 선없애기 */
+fieldset,img {border: 0; vertical-align: top}
+/* 리스트 기호 빼기 */
+ol,ul {list-style: none}
+/* 태그 기본 기울임꼴 제거 */
+address,em {font-style: normal}
+/* 페이지안에서 가장 많은 링크색 지정 
+해당 시안에서 메뉴, 링크의 컬러가 모두 동일할 때 변주를 주기 위해 사용
+이건 공통은 아니고 시안마다, 상황마다 다름 */
+a {text-decoration: none; color: #1c1c1c}
+/* iframe으로 외부컨텐츠를 연결했을때
+외부컨텐츠안쪽내용이 우리페이지에 영향을 주지못하도록 가려줌
+*/
+iframe {overflow: hidden; border: 0}
+
+/* 칸의 선을 합치기, 칸의 간격없애기, 가로를 늘려줌 */
+table {border-collapse: collapse; border-spacing: 0; width: 100%}
+
+/* 굵기 빼고 헤딩태그 폰트크기를 body에 선언한 크기와 일치시킴 */
+h1,h2,h3,h4,h5,h6 {font-weight: normal; font-size: 100%}
+
+/* 폼요소의 높이가 다를때 요소끼리 세로정렬시킴
+폼요소도 글자취급 요소이기 때문에 vertical align으로 가능. */
+input,select,textarea,button {vertical-align: middle; margin: 0; padding: 0}
+
+/* textarea 리사이즈기능 빼기
+textarea는 엔터치면 안되고 옆으로 써야함 */
+textarea {resize: none}
+
+/* 페이지안의 모든 폰트의 줄간격을 1.5로 통일시킴
+line-height을 안걸면 1.4 정도 걸림.
+이 코드를 쓰게 되면 포토샵 시안작업 할 때 본문의 줄간격도 모두 1.5배로 통일해야함.
+줄간격 Auto를 쓸 수 없는 것. Auto 쓰려면 이 기능 뺄 것!
+폰트는 짝수의 경우 딱 떨어지는데 홀수는 나누면 소수점이 되기 때문에 반올림.
+
+-webkit : 벤더 프리픽스. 모바일 크롬, 모바일 사파리 브라우져의 텍스트 자동확대 방지 코드. text-size-adjust는 -webkit-를 붙여줘야 쓸 수 있다. */
+body {line-height: 1.5; -webkit-text-size-adjust:none}
+
+/* legend,caption,메뉴제목,섹션제목 블라인드
+네이버에 있는 것. */
+legend,caption,.blind {position: absolute; overflow: hidden; clip: rect(0 0 0 0); margin: -1px; width: 1px; height: 1px}
+
+/* 헬베티카, 애플산돌 네오고딕 있을 때 해당 폰트로 보여지고 없을 경우 단말기 기본폰트로 보여진다. */
+body,button,select,input,select,textarea,table {
+    font-family: 'Nanum Gothic', 'Lato', 'Nanum Brush Script', 'Helvetica Neue','Apple SD Gothic Neo',sans-serif;
+    font-size: 16px;
+}
+
+/* a {color: #333;} */
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+/* placeholder 컬러변경 */
+::-webkit-input-placeholder {color:#999;}
+::-moz-placeholder { color: #999; opacity: 1;}
+/*ie11에서 선택자점수가 낮게잡히는 버그때문에 강제로 점수올려줌*/
+:-ms-input-placeholder {color: #999 !important;}
+::placeholder { color: #999;}
+
+video, img {width: 100%;}
+
+
+/* 아이콘 이미지 최적화 작업 */
+.icon {background-image: url(../images/icon.png);}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 1.5px) {
+           .icon {background-image: url(../images/icon@2.png); background-size: 500px;}
+}
+                        
+
+/* input style */
+input {background-image: none;}
+input[type=button],
+input[type=reset],
+input[type=text],
+input[type=password],
+input[type=submit],
+input[type=search],
+input[type=tel],
+input[type=email] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+input:checked[type=checkbox] {
+    background-color: #666;
+    -webkit-appearance: checkbox
+}
+
+
+/* 셀렉트 메뉴 메인 스타일 */
+.ui_select2 {
+    display: inline-block; 
+    width: 100%;
+    box-sizing: border-box;
+    color: #fff;
+    height: 36px;
+    border: 0 none;
+    padding: 0 10px;
+    font-family: inherit;
+    font-size: inherit;
+    vertical-align: middle;
+    text-align: left;
+    white-space: nowrap;
+    background: #2c2f34 url(../images/down.svg) no-repeat right 10px center;
+    background-size: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+}
+
+/* 메인 텍스트 박스 스타일1 */
+.ui_input3 {
+    background: #2c2f34;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    height: 36px;
+    padding: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
